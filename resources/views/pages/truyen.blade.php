@@ -23,7 +23,7 @@
                     }
                 </style>
                 <ul class="infotruyen">
-                    <li>Tác giả: Trần Quang Huy</li>
+                    <li>Tác giả: {{$truyen->tacgia}}</li>
                     <li>Thể loại: Siêu mạnh</li>
                     <li>Số chapter: 1 tỷ</li>
                     <li>Số lượt xem: SOS</li>

@@ -48,6 +48,7 @@ class TruyenController extends Controller
                 'slug_truyen' => 'required|unique:truyen|max:255',
                 'hinhanh' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048|dimensions:min_width=100,min_height=100,max_width=2000,max_height=2000',
                 'tomtat' => 'required|max:255',
+                'tacgia' => 'required',
                 'kichhoat' => 'required',
                 'danhmuc' => 'required'
             ],
@@ -57,6 +58,7 @@ class TruyenController extends Controller
                 'tentruyen.required' => 'Vui lòng điền tên truyện', 
                 'slug_truyen.required' => 'Vui lòng điền slug truyện',                         
                 'tomtat.required' => 'Vui lòng điền mô tả truyện',
+                'tacgia.required' => 'Vui lòng điền tác giả truyện',
                 'hinhanh.required' => 'Vui lòng điền hình ảnh',
             ],
         );
@@ -66,6 +68,7 @@ class TruyenController extends Controller
         $truyen->slug_truyen = $data['slug_truyen'];
         $truyen->tomtat = $data['tomtat'];
         $truyen->kichhoat = $data['kichhoat'];
+        $truyen->tacgia = $data['tacgia'];
         $truyen->danhmuc_id = $data['danhmuc'];
 
         $get_image = $request->hinhanh;
@@ -122,12 +125,14 @@ class TruyenController extends Controller
                 'slug_truyen' => 'required|max:255',
                 'tomtat' => 'required|max:255',
                 'kichhoat' => 'required',
+                'tacgia' => 'required',
                 'danhmuc' => 'required'
             ],
             [   
                 'tentruyen.required' => 'Vui lòng điền tên truyện', 
                 'slug_truyen.required' => 'Vui lòng điền slug truyện',                         
                 'tomtat.required' => 'Vui lòng điền mô tả truyện',
+                'tacgia.required' => 'Vui lòng điền tác giả truyện',
             ],
         );
 
@@ -137,6 +142,7 @@ class TruyenController extends Controller
         $truyen->tomtat = $data['tomtat'];
         $truyen->kichhoat = $data['kichhoat'];
         $truyen->danhmuc_id = $data['danhmuc'];
+        $truyen->tacgia = $data['tacgia'];
 
         $get_image = $request->hinhanh;
         if($get_image) {
