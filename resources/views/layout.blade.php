@@ -66,13 +66,11 @@
             <!-- Sách mới -->
             @yield('content')
             <footer class="text-muted">
-                <div class="container">
                     <p class="float-right" style="float:right">
                         <a href="#">Back to top</a>
                     </p>
                         <p>Album example is © Bootstrap, but please download and customize it for yourself!</p>
                         <p>New to Bootstrap? <a href="../../">Visit the homepage</a> or read our <a href="../../getting-started/">getting started guide</a>.</p>
-                </div>
             </footer>
         </div>
 
@@ -93,6 +91,23 @@
                     }
                 }
             })
+        </script>
+
+        <script type="text/javascript">
+            $('.select-chapter').on('change',function () {
+                var url = $(this).val();
+                if(url){
+                    window.location = url;
+                }
+                return false;
+            });
+
+            current_chapter();
+
+            function current_chapter() {
+                var url = window.location.href;
+                $('.select-chapter').find('option[value="'+url+'"]').attr("selected",true);
+            }
         </script>
     </body>
 </html>

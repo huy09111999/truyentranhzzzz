@@ -23,12 +23,17 @@
                     }
                 </style>
                 <ul class="infotruyen">
+                    <li>Tên truyện: {{$truyen->tentruyen}}</li>
                     <li>Tác giả: {{$truyen->tacgia}}</li>
                     <li>Thể loại: Siêu mạnh</li>
                     <li>Số chapter: 1 tỷ</li>
                     <li>Số lượt xem: SOS</li>
                     <li><a href="#">Xem mục lục</a></li>
-                    <li><a class="btn btn-primary" href="#">Đọc online</a></li>
+                    @if($chapter_dau)
+                        <li><a href="{{url('xem-chapter/'.$chapter_dau->slug_chapter)}}" class="btn btn-primary">Đọc online</a></li>
+                    @else
+                        <li><a class="btn btn-danger">Hiện tại chưa có chương</a></li>
+                    @endif
                 </ul>
             </div>
         </div>
@@ -44,66 +49,54 @@
         <hr>
         <h4>Mục lục</h4>
         <ul class="mucluctruyen">
-                    <li><a href="">Phần thứ nhất - CHƯƠNG MỘT</a></li>
-                    <li><a href="">Phần thứ nhất - CHƯƠNG MỘT</a></li>
-                    <li><a href="">Phần thứ nhất - CHƯƠNG MỘT</a></li>
-                    <li><a href="">Phần thứ nhất - CHƯƠNG MỘT</a></li>
-                    <li><a href="">Phần thứ nhất - CHƯƠNG MỘT</a></li>
-                    <li><a href="">Phần thứ nhất - CHƯƠNG MỘT</a></li>
-                    <li><a href="">Phần thứ nhất - CHƯƠNG MỘT</a></li>
-                    <li><a href="">Phần thứ nhất - CHƯƠNG MỘT</a></li>
-                    <li><a href="">Phần thứ nhất - CHƯƠNG MỘT</a></li>
-        </ul>
+            @php
+            $mucluc = count($chapter);
+            @endphp
+            @if($mucluc>0)
+                @foreach($chapter as $key => $chap)
+                    <li><a href="{{url('xem-chapter/'.$chap->slug_chapter)}}">{{$chap->tieude}}</a></li>
+                @endforeach
+            @else
+                    <li>Hiện tại chưa có danh mục</a></li>
+            @endif
         <h4>Sách cùng danh mục</h4>
         <div class="row">
-            <div class="col-md-3">
-                <div class="card mb-4 box-shadow">
-                    <a href=""></a>
-                        <img class="card-img-top" src="{{asset('public/uploads/truyen/GokumangaToriyamad98.png')}}" style="height: 225px; width: 100%; display: block;" >
-                        <div class="card-body">
-                            <h3>Tiêu đề</h3>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                        </div>
-                    </a>    
+            @foreach($cungdanhmuc as $key => $value)
+                <div class="col-md-3">
+                    <div class="card mb-4 box-shadow">
+                            <img class="card-img-top" src="{{asset('public/uploads/truyen/'.$value->hinhanh)}}" style="height: 225px; width: 100%; display: block;" >
+                            <div class="card-body">
+                                <h5>{{$value->tentruyen}}</h5>
+                                <p class="card-text">{{$value->tomtat}}</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                        <a href="{{'xem-truyen/'.$value->slug_truyen}}" type="button" class="btn btn-sm btn-outline-secondary">Đọc ngay</a>
+                                        <a href="" type="button" class="btn btn-sm btn-outline-secondary"><i class="fas fa-eye">2000</i></a>
+                                    </div>
+                                    <small class="text-muted">9 mins ago</small>
+                                </div>
+                            </div> 
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-3">
-                <div class="card mb-4 box-shadow">
-                    <a href=""></a>
-                        <img class="card-img-top" src="{{asset('public/uploads/truyen/GokumangaToriyamad98.png')}}" style="height: 225px; width: 100%; display: block;" >
-                        <div class="card-body">
-                            <h3>Tiêu đề</h3>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                        </div>
-                    </a>    
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="card mb-4 box-shadow">
-                    <a href=""></a>
-                        <img class="card-img-top" src="{{asset('public/uploads/truyen/GokumangaToriyamad98.png')}}" style="height: 225px; width: 100%; display: block;" >
-                        <div class="card-body">
-                            <h3>Tiêu đề</h3>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                        </div>
-                    </a>    
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="card mb-4 box-shadow">
-                    <a href=""></a>
-                        <img class="card-img-top" src="{{asset('public/uploads/truyen/GokumangaToriyamad98.png')}}" style="height: 225px; width: 100%; display: block;" >
-                        <div class="card-body">
-                            <h3>Tiêu đề</h3>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                        </div>
-                    </a>    
-                </div>
-            </div>
+            @endforeach        
         </div>
     </div>
     <div class="col-md-3">
         <h3>Sách hay xem nhiều</h3>
+        <div class="row mt-2">
+            @foreach($cungdanhmuc as $key => $value)
+            <div class="col-md-8">
+                <img class="card-img-top" src="{{asset('public/uploads/truyen/'.$value->hinhanh)}}" style="height: 225px; width: 100%; display: block;" >                  
+                            <!-- <h5>{{$value->tentruyen}}</h5>
+                            <p class="card-text">{{$value->tomtat}}</p> -->
+                    <div class="btn-group">
+                        <a href="{{'xem-truyen/'.$value->slug_truyen}}" type="button" class="btn btn-sm btn-outline-secondary">Đọc ngay</a>
+                        <a href="" type="button" class="btn btn-sm btn-outline-secondary"><i class="fas fa-eye">2000</i></a>
+                    </div>
+                    <small class="text-muted">9 mins ago</small>                          
+            </div>
+            @endforeach  
+        </div>
     </div>
 </div>
 @endsection

@@ -20,7 +20,7 @@
                                 <p class="card-text">{{$value->tomtat}}</p>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="btn-group">
-                                        <a href="{{'xem-truyen/'.$value->slug_truyen}}" type="button" class="btn btn-sm btn-outline-secondary">Đọc ngay</a>
+                                        <a href="{{url('xem-truyen/'.$value->slug_truyen)}}" type="button" class="btn btn-sm btn-outline-secondary">Đọc ngay</a>
                                         <a href="" type="button" class="btn btn-sm btn-outline-secondary"><i class="fas fa-eye">2000</i></a>
                                     </div>
                                     <small class="text-muted">9 mins ago</small>

@@ -1,7 +1,4 @@
 @extends('../layout')
-{{-- @section('slide') 
-    @include('pages.slide')
-@endsection --}}
 @section('content')
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
@@ -11,36 +8,46 @@
   </ol>
 </nav>
 <div class="row">
-    <h5>Cô gái đến từ hôm qua</h5>
-    <p>Chương hiện tại: Chương 1</p>
-    <p>Chọn chương</p>
-    <select class="custom-select" style="width: 30%; margin-left: 11px;">
-        <option selected>Chương 1</option>
-        <option value="1">Chương 2</option>
-        <option value="2">Chương 3</option>
-        <option value="3">Chương 4</option>
-    </select>
-    <p>Tất cả mọi người, ai cũng cho rằng cô chính là người hại chết em gái mình để cướp chồng bởi em gái cô vừa chỉ qua đời ba tháng
-        Cô đã khăng khăng đòi cưới em rể - Sở Luật của Sở Thị
-        Ngay cả chính người mẹ ruột cũng từ và cho rằng nàng không có đứa con độc ác như cô...
+  <div class="col-md-12">
+    <h4>{{$chapter->truyen->tentruyen}}</h4>
+    <p>Chương hiện tại: {{$chapter->tieude}}</p>
+    <div class="col-md-5">
 
-        Tại lễ tân hôn, người chồng thốt lên -- cô làm tôi ghê tởm, đừng hôn tôi...
+    <style type="text/css">
+      .isDisabled {
+        color: currentColor;
+        pointer-events: none;
+        opacity: 0.5;
+        text-decoration:none;
+        color: #fff
+      }
+    </style>
+      <div class="form-group">
+          <label for="exampleFormControlInput1">Chọn chương</label>
+          <p><a class="btn btn-primary {{$chapter->id==$min_id->id ? 'isDisabled' : ''}}" href="{{url('xem-chapter/'.$previous_chapter)}}">Trước</a></p>
+          <select class="custom-select custom-select-lg mb-3 select-chapter" name="select-chapter" style="width:30%">
+            @foreach($all_chapter as $key => $chap)
+              <option value="{{url('xem-chapter/'.$chap->slug_chapter)}}">{{$chap->tieude}}</option>
+            @endforeach
+          </select>
+          <p><a class="btn btn-primary {{$chapter->id==$max_id->id ? 'isDisabled' : ''}}" href="{{url('xem-chapter/'.$next_chapter)}}">Sau</a></p>
+      </div>
+    </div>
+    <div class="noidungchuong">
+         {!! $chapter->noidung !!}
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Chọn chương</label>
+          <select class="custom-select custom-select-lg mb-3 select-chapter" name="select-chapter" style="width:30%">
+            @foreach($all_chapter as $key => $chap)
+              <option value="{{url('xem-chapter/'.$chap->slug_chapter)}}">{{$chap->tieude}}</option>
+            @endforeach
+          </select>
+        </div>
+      </div>
 
-        Đèn flash chớp nhoáy liên tục ghi lại đầy đủ cảnh cô xấu hổ
-
-        Đêm động phòng anh nhục nhã cô, Hạ Nhược Tâm,
-        Cô không phải là vì bò lên giường của tôi sao? Tôi sẽ làm cho cô sống không bằng chết.
-
-        Sau đó, cô thật sự sống không bằng chết, anh vì buôn bán đã đưa cô đến trước mặt một người đàn ông khác, anh vì cho người phụ nữ mình yêu thích danh phận và đưa cô đến trước mặt một đống đàn ông !
-        Cái người phụ nữ cực kỳ giống em gái cô gối trên cánh tay anh, nhả khí như lan, “Luật, anh sẽ cưới em sao...?”
-
-        Anh xoay cười, cười tàn nhẫn, “Được, anh ly hôn, cưới uhm"
-        Anh tái hôn, động phòng hoa chúc, còn cô ở một kho hàng lạnh băng, sinh một đứa con gái.
-
-        Một năm kia, dưới một gốc cây đại thụ, bé trai nói, trưởng thành, anh sẽ trở về tìm em, cưới em làm cô vợ nhỏ.
-        Anh nhớ kỹ hứa hẹn, tìm lầm rồi, cưới đúng rồi, hận sai rồi.
-
-        Truyện luôn đứng top 10 SSTruyen 2019, thân mời các bạn đọc!
-    </p>
+      <h3>Lưu và chia sẻ truyện: </h3>
+        <i class="fab fa-facebook-square"></i>
+        <i class="fab fa-twitter-square"></i>
+  </div> 
 </div>
 @endsection
