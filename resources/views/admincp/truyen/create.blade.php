@@ -40,6 +40,10 @@
                         <input type="text" class="form-control" value="{{old('tacgia')}}" name="tacgia" aria-describedby="emailHelp" placeholder="Tác giả...">                       
                       </div>      
                       <div class="form-group">
+                        <label for="exampleInputEmail1">Từ khóa</label>
+                        <textarea name="tukhoa" class="form-control" rows="5" style="resize: none"></textarea>                       
+                      </div> 
+                      <div class="form-group">
                         <label for="exampleInputEmail1">Tóm tắt truyện</label>
                         <textarea name="tomtat" class="form-control" rows="5" style="resize: none"></textarea>                       
                       </div>   

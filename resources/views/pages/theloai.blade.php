@@ -4,11 +4,11 @@
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="{{url('/')}}">Trang chủ</a></li>
-    <li class="breadcrumb-item active" aria-current="page">{{$tendanhmuc}}</li>
+    <li class="breadcrumb-item active" aria-current="page">{{$tentheloai}}</li>
   </ol>
 </nav>
 
-<h3>{{$tendanhmuc}}</h3>
+<h3>{{$tentheloai}}</h3>
 <div class="album py-5 bg-light">
     <div class="container">
         <div class="row">

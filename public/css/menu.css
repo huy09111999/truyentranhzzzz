@@ -1,0 +1,25 @@
+form {
+    position: relative;
+}
+
+.dropdown-menu {
+	position: absolute;
+	top: 120%;
+	/* float: right; */
+	left: 0;
+	min-width: 10rem;
+}
+
+.li_timkiem_ajax {
+	padding: 5px 15px;
+}
+
+.li_timkiem_ajax a{
+	text-decoration: none;
+	color: #333;
+}
+
+.li_timkiem_ajax a:hover {
+	color: black;
+	text-decoration: underline;
+}
